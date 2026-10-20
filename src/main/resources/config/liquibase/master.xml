@@ -19,4 +19,8 @@
     file="config/liquibase/changelog/20260905020000_added_entity_Album.xml"
     relativeToChangelogFile="false"
   />
+  <include
+    file="config/liquibase/changelog/20261019010000_added_entity_Photo.xml"
+    relativeToChangelogFile="false"
+  />
 </databaseChangeLog>

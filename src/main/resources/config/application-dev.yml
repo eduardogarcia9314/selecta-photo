@@ -55,8 +55,14 @@ spring:
     cache: false
   docker:
     compose:
-     enabled: false
-
+      enabled: false
+  servlet:
+    multipart:
+      max-file-size: 30MB
+      max-request-size: 1GB
+selecta:
+  storage:
+    root: C:/selecta-storage
 server:
   port: 8080
   # make sure requests the proxy uri instead of the server one
