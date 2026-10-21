@@ -1,0 +1,685 @@
+:host {
+  display: block;
+}
+
+/* =============================
+   BASE
+   ============================= */
+
+.gallery-page {
+  --green-deep: #0e2f2a;
+  --green: #1f4a43;
+  --gold: #d6b87a;
+  --ivory: #f3efe8;
+  --charcoal: #2a2a2a;
+
+  min-height: 100svh;
+
+  background: var(--ivory);
+  color: var(--charcoal);
+}
+
+/* =============================
+   NAV
+   ============================= */
+
+.gallery-nav {
+  position: fixed;
+
+  top: 0;
+  left: 0;
+  right: 0;
+
+  z-index: 50;
+
+  height: 92px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 clamp(1.5rem, 5vw, 6rem);
+
+  background: linear-gradient(to bottom, rgba(14, 47, 42, 0.92), rgba(14, 47, 42, 0.55), transparent);
+
+  pointer-events: none;
+}
+
+.gallery-nav > * {
+  pointer-events: auto;
+}
+
+.brand-link img {
+  display: block;
+
+  width: clamp(125px, 13vw, 190px);
+
+  height: auto;
+}
+
+.nav-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+
+  font-family: Poppins, sans-serif;
+
+  font-size: 0.62rem;
+
+  letter-spacing: 0.17em;
+
+  text-transform: uppercase;
+
+  color: rgba(243, 239, 232, 0.55);
+}
+
+.separator {
+  width: 22px;
+  height: 1px;
+
+  background: rgba(214, 184, 122, 0.5);
+}
+
+/* =============================
+   HERO
+   ============================= */
+
+.album-hero {
+  position: relative;
+
+  min-height: 68svh;
+
+  display: flex;
+  align-items: flex-end;
+
+  padding: 10rem clamp(1.5rem, 5vw, 6rem) 5rem;
+
+  overflow: hidden;
+
+  background: radial-gradient(circle at 82% 18%, rgba(214, 184, 122, 0.12), transparent 28rem), linear-gradient(145deg, #0e2f2a, #0b2723);
+
+  color: var(--ivory);
+}
+
+.hero-mark {
+  position: absolute;
+
+  width: min(60vw, 850px);
+
+  right: -12vw;
+  top: 50%;
+
+  opacity: 0.035;
+
+  transform: translateY(-50%) rotate(-8deg);
+
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+
+  z-index: 2;
+
+  width: min(1500px, 100%);
+
+  margin: 0 auto;
+}
+
+.hero-index {
+  display: flex;
+  align-items: center;
+
+  gap: 1rem;
+
+  margin-bottom: 2rem;
+
+  font-family: Poppins, sans-serif;
+
+  font-size: 0.65rem;
+
+  letter-spacing: 0.18em;
+
+  text-transform: uppercase;
+
+  color: var(--gold);
+}
+
+.hero-index .line {
+  width: 48px;
+  height: 1px;
+
+  background: rgba(214, 184, 122, 0.6);
+}
+
+.hero-index span:last-child {
+  color: rgba(243, 239, 232, 0.35);
+}
+
+.album-hero h1 {
+  max-width: 1100px;
+
+  margin: 0;
+
+  font-family: 'The Season', Georgia, serif;
+
+  font-size: clamp(3.6rem, 7vw, 8rem);
+
+  font-weight: 400;
+
+  line-height: 0.92;
+
+  letter-spacing: -0.045em;
+}
+
+.hero-bottom {
+  margin-top: 4rem;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+
+  gap: 3rem;
+}
+
+.hero-bottom > p {
+  max-width: 430px;
+
+  margin: 0;
+
+  padding-left: 1.5rem;
+
+  border-left: 1px solid rgba(214, 184, 122, 0.45);
+
+  font-family: Poppins, sans-serif;
+
+  font-size: 0.88rem;
+
+  font-weight: 300;
+
+  line-height: 1.8;
+
+  color: rgba(243, 239, 232, 0.55);
+}
+
+.album-stats {
+  display: flex;
+
+  gap: clamp(2rem, 5vw, 5rem);
+}
+
+.album-stats div {
+  display: flex;
+  flex-direction: column;
+
+  gap: 0.35rem;
+}
+
+.album-stats strong {
+  font-family: 'The Season', Georgia, serif;
+
+  font-size: 2.5rem;
+
+  font-weight: 400;
+
+  color: var(--gold);
+}
+
+.album-stats span {
+  font-family: Poppins, sans-serif;
+
+  font-size: 0.58rem;
+
+  letter-spacing: 0.15em;
+
+  text-transform: uppercase;
+
+  color: rgba(243, 239, 232, 0.35);
+}
+
+.scroll-indicator {
+  position: absolute;
+
+  right: clamp(1.5rem, 5vw, 6rem);
+  bottom: 2rem;
+
+  display: flex;
+  gap: 0.8rem;
+
+  font-family: Poppins, sans-serif;
+
+  font-size: 0.58rem;
+
+  letter-spacing: 0.18em;
+
+  text-transform: uppercase;
+
+  color: rgba(243, 239, 232, 0.3);
+}
+
+/* =============================
+   PHOTO SECTION
+   ============================= */
+
+.photo-section {
+  padding: clamp(4rem, 8vw, 8rem) clamp(1rem, 4vw, 5rem) 8rem;
+
+  background: var(--ivory);
+}
+
+.photo-section-header {
+  width: min(1500px, 100%);
+
+  margin: 0 auto clamp(3rem, 6vw, 6rem);
+
+  display: flex;
+
+  align-items: flex-end;
+  justify-content: space-between;
+
+  gap: 2rem;
+}
+
+.photo-section-header > div {
+  display: flex;
+  align-items: baseline;
+
+  gap: 1rem;
+}
+
+.section-number {
+  font-family: Poppins, sans-serif;
+
+  font-size: 0.65rem;
+
+  letter-spacing: 0.14em;
+
+  color: var(--gold);
+}
+
+.photo-section h2 {
+  margin: 0;
+
+  font-family: 'The Season', Georgia, serif;
+
+  font-size: clamp(2.5rem, 5vw, 5rem);
+
+  font-weight: 400;
+
+  letter-spacing: -0.035em;
+
+  color: var(--green-deep);
+}
+
+.photo-section-header p {
+  margin: 0;
+
+  max-width: 300px;
+
+  font-family: Poppins, sans-serif;
+
+  font-size: 0.82rem;
+
+  color: rgba(42, 42, 42, 0.48);
+}
+
+/* =============================
+   GRID
+   ============================= */
+
+.gallery-grid {
+  width: min(1500px, 100%);
+
+  margin: 0 auto;
+
+  columns: 3;
+
+  column-gap: clamp(0.75rem, 1.5vw, 1.4rem);
+}
+
+.photo-card {
+  display: block;
+
+  width: 100%;
+
+  margin-bottom: clamp(0.75rem, 1.5vw, 1.4rem);
+
+  padding: 0;
+
+  border: 0;
+
+  background: transparent;
+
+  cursor: pointer;
+
+  break-inside: avoid;
+
+  text-align: left;
+}
+
+.photo-frame {
+  position: relative;
+
+  overflow: hidden;
+
+  background: #ded8cd;
+}
+
+.photo-frame img {
+  display: block;
+
+  width: 100%;
+  height: auto;
+
+  transition:
+    transform 900ms cubic-bezier(0.16, 1, 0.3, 1),
+    filter 600ms ease;
+}
+
+.photo-shade {
+  position: absolute;
+
+  inset: 0;
+
+  opacity: 0;
+
+  background: linear-gradient(to top, rgba(14, 47, 42, 0.82), rgba(14, 47, 42, 0.04));
+
+  transition: opacity 450ms ease;
+}
+
+.photo-number {
+  position: absolute;
+
+  top: 1rem;
+  left: 1rem;
+
+  opacity: 0;
+
+  font-family: Poppins, sans-serif;
+
+  font-size: 0.6rem;
+
+  letter-spacing: 0.15em;
+
+  color: rgba(243, 239, 232, 0.65);
+
+  transition: opacity 350ms ease;
+}
+
+.photo-action {
+  position: absolute;
+
+  left: 1.25rem;
+  right: 1.25rem;
+  bottom: 1.25rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  opacity: 0;
+
+  transform: translateY(12px);
+
+  transition:
+    opacity 400ms ease,
+    transform 500ms cubic-bezier(0.16, 1, 0.3, 1);
+
+  font-family: Poppins, sans-serif;
+
+  font-size: 0.65rem;
+
+  letter-spacing: 0.1em;
+
+  text-transform: uppercase;
+
+  color: var(--ivory);
+}
+
+.action-circle {
+  width: 38px;
+  height: 38px;
+
+  display: grid;
+  place-items: center;
+
+  border: 1px solid rgba(243, 239, 232, 0.35);
+
+  border-radius: 50%;
+}
+
+.photo-card:hover .photo-frame img {
+  transform: scale(1.035);
+
+  filter: saturate(0.92) contrast(1.02);
+}
+
+.photo-card:hover .photo-shade,
+.photo-card:hover .photo-number,
+.photo-card:hover .photo-action {
+  opacity: 1;
+}
+
+.photo-card:hover .photo-action {
+  transform: translateY(0);
+}
+
+/* =============================
+   LIGHTBOX
+   ============================= */
+
+.lightbox {
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 100;
+
+  display: grid;
+
+  grid-template-rows: auto 1fr;
+
+  background: rgba(5, 20, 18, 0.985);
+
+  backdrop-filter: blur(14px);
+
+  animation: lightbox-enter 350ms ease both;
+}
+
+.lightbox-header {
+  height: 80px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 clamp(1.5rem, 4vw, 4rem);
+
+  font-family: Poppins, sans-serif;
+
+  font-size: 0.62rem;
+
+  letter-spacing: 0.18em;
+
+  color: rgba(243, 239, 232, 0.45);
+}
+
+.close-button {
+  border: 0;
+
+  background: transparent;
+
+  color: var(--ivory);
+
+  font-size: 2.1rem;
+
+  cursor: pointer;
+
+  transition: transform 250ms ease;
+}
+
+.close-button:hover {
+  transform: rotate(90deg);
+}
+
+.lightbox-content {
+  display: grid;
+  place-items: center;
+
+  padding: 0 2rem 3rem;
+}
+
+.lightbox-content img {
+  max-width: 94vw;
+  max-height: calc(100vh - 130px);
+
+  object-fit: contain;
+
+  box-shadow: 0 40px 140px rgba(0, 0, 0, 0.5);
+}
+
+@keyframes lightbox-enter {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+/* =============================
+   LOADING
+   ============================= */
+
+.loading-state {
+  min-height: 100svh;
+
+  display: grid;
+  place-content: center;
+
+  text-align: center;
+
+  background: var(--green-deep);
+
+  color: var(--ivory);
+
+  font-family: Poppins, sans-serif;
+}
+
+.loader-mark img {
+  width: 70px;
+
+  opacity: 0.8;
+
+  animation: breathe 1.8s ease-in-out infinite;
+}
+
+.loading-state p {
+  margin-top: 1.5rem;
+
+  font-size: 0.65rem;
+
+  letter-spacing: 0.18em;
+
+  text-transform: uppercase;
+
+  color: rgba(243, 239, 232, 0.45);
+}
+
+@keyframes breathe {
+  0%,
+  100% {
+    transform: scale(0.94);
+    opacity: 0.45;
+  }
+
+  50% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+}
+
+/* =============================
+   RESPONSIVE
+   ============================= */
+
+@media (max-width: 1000px) {
+  .gallery-grid {
+    columns: 2;
+  }
+
+  .hero-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 650px) {
+  .gallery-nav {
+    height: 72px;
+
+    padding: 0 1.25rem;
+  }
+
+  .brand-link img {
+    width: 120px;
+  }
+
+  .nav-meta span:first-child,
+  .separator {
+    display: none;
+  }
+
+  .album-hero {
+    min-height: 72svh;
+
+    padding: 8rem 1.25rem 3rem;
+  }
+
+  .album-hero h1 {
+    font-size: clamp(3.2rem, 16vw, 5.4rem);
+  }
+
+  .hero-bottom {
+    margin-top: 3rem;
+  }
+
+  .album-stats {
+    width: 100%;
+
+    justify-content: space-between;
+  }
+
+  .scroll-indicator {
+    display: none;
+  }
+
+  .photo-section {
+    padding: 4rem 0.5rem 6rem;
+  }
+
+  .photo-section-header {
+    padding: 0 0.75rem;
+
+    flex-direction: column;
+
+    align-items: flex-start;
+  }
+
+  .gallery-grid {
+    columns: 2;
+
+    column-gap: 0.5rem;
+  }
+
+  .photo-card {
+    margin-bottom: 0.5rem;
+  }
+
+  .photo-action,
+  .photo-number {
+    display: none;
+  }
+}

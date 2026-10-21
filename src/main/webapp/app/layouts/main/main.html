@@ -1,3 +1,6 @@
+@if (isPublicView()) {
+<router-outlet />
+} @else {
 <jhi-page-ribbon />
 
 <div>
@@ -11,3 +14,4 @@
 
   <jhi-footer />
 </div>
+}

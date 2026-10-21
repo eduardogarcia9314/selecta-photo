@@ -1,0 +1,80 @@
+<main class="selecta-access" [style.--parallax-x]="parallaxX" [style.--parallax-y]="parallaxY">
+  <div class="ambient ambient-one"></div>
+  <div class="ambient ambient-two"></div>
+
+  <div class="noise"></div>
+
+  <img class="background-mark" src="/content/images/selecta/selecta-mark-gold.png" alt="" />
+
+  <header class="topbar">
+    <img class="brand" src="/content/images/selecta/selecta-logo-hero.png" alt="Selecta" />
+
+    <span class="private-label"> Acceso privado </span>
+  </header>
+
+  <section class="hero">
+    <div class="hero-copy">
+      <div class="eyebrow">
+        <span></span>
+        SELECTA PHOTO
+      </div>
+
+      <h1>
+        Momentos que
+        <em>hacen tu historia</em>
+      </h1>
+
+      <p>Una experiencia privada para descubrir, seleccionar y conservar tus fotografías favoritas.</p>
+    </div>
+
+    <form class="access-card" (ngSubmit)="openAlbum()">
+      <div class="card-number">01</div>
+
+      <div class="card-copy">
+        <span>Tu experiencia comienza aquí</span>
+
+        <h2>Ingresa a tu álbum</h2>
+      </div>
+
+      <label for="album-code"> Código privado </label>
+
+      <div class="code-field">
+        <input
+          id="album-code"
+          name="accessCode"
+          [(ngModel)]="accessCode"
+          maxlength="20"
+          autocomplete="off"
+          spellcheck="false"
+          placeholder="23B11334"
+        />
+
+        <div class="field-line"></div>
+      </div>
+
+      @if (errorMessage) {
+        <p class="error-message">
+          {{ errorMessage }}
+        </p>
+      }
+
+      <button type="submit" [disabled]="loading">
+        <span>
+          {{ loading ? 'Buscando álbum' : 'Explorar mi álbum' }}
+        </span>
+
+        <span class="arrow"> → </span>
+      </button>
+
+      <p class="privacy-copy">Tu galería es privada y solo puede consultarse mediante su código de acceso.</p>
+    </form>
+  </section>
+
+  <footer>
+    <span> Eventos y experiencias inolvidables </span>
+
+    <span class="footer-line"></span>
+
+    <span> Selecta © 2026 </span>
+  </footer>
+</main>

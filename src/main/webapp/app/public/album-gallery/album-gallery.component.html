@@ -1,0 +1,120 @@
+<main class="gallery-page">
+  <header class="gallery-nav">
+    <a routerLink="/" class="brand-link">
+      <img src="/content/images/selecta/selecta-logo-hero.png" alt="Selecta" />
+    </a>
+
+    <div class="nav-meta">
+      <span>Galería privada</span>
+      <span class="separator"></span>
+      <span>{{ accessCode }}</span>
+    </div>
+  </header>
+
+  @if (loading) {
+    <section class="loading-state">
+      <div class="loader-mark">
+        <img src="/content/images/selecta/selecta-mark-gold.png" alt="" />
+      </div>
+
+      <p>Preparando tus recuerdos</p>
+    </section>
+  }
+
+  @if (errorMessage) {
+    <section class="loading-state">
+      <p>{{ errorMessage }}</p>
+    </section>
+  }
+
+  @if (!loading && album) {
+    <section class="album-hero">
+      <img class="hero-mark" src="/content/images/selecta/selecta-mark-gold.png" alt="" />
+
+      <div class="hero-content">
+        <div class="hero-index">
+          <span>SELECTA PHOTO</span>
+          <span class="line"></span>
+          <span>Experiencia privada</span>
+        </div>
+
+        <h1>
+          {{ album.name }}
+        </h1>
+
+        <div class="hero-bottom">
+          <p>Revive cada instante y descubre las fotografías que cuentan tu historia.</p>
+
+          <div class="album-stats">
+            <div>
+              <strong>
+                {{ photos.length }}
+              </strong>
+
+              <span> fotografías </span>
+            </div>
+
+            <div>
+              <strong>01</strong>
+
+              <span> galería privada </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="scroll-indicator">
+        <span>Descubrir</span>
+        <span>↓</span>
+      </div>
+    </section>
+
+    <section class="photo-section">
+      <header class="photo-section-header">
+        <div>
+          <span class="section-number"> 01 </span>
+
+          <h2>Tus fotografías</h2>
+        </div>
+
+        <p>Selecciona tus recuerdos favoritos.</p>
+      </header>
+
+      <div class="gallery-grid">
+        @for (photo of photos; track photo.id; let i = $index) {
+          <button class="photo-card" type="button" (click)="openPhoto(photo)">
+            <div class="photo-frame">
+              <img [src]="thumbnailUrl(photo)" [alt]="photo.originalName" loading="lazy" />
+
+              <div class="photo-shade"></div>
+
+              <div class="photo-number">
+                {{ (i + 1).toString().padStart(2, '0') }}
+              </div>
+
+              <div class="photo-action">
+                <span> Ver fotografía </span>
+
+                <span class="action-circle"> ↗ </span>
+              </div>
+            </div>
+          </button>
+        }
+      </div>
+    </section>
+  }
+
+  @if (selectedPhoto) {
+    <div class="lightbox" (click)="closePhoto()">
+      <header class="lightbox-header">
+        <span> SELECTA PHOTO </span>
+
+        <button type="button" class="close-button" (click)="closePhoto()">×</button>
+      </header>
+
+      <div class="lightbox-content">
+        <img [src]="previewUrl(selectedPhoto)" [alt]="selectedPhoto.originalName" (click)="$event.stopPropagation()" />
+      </div>
+    </div>
+  }
+</main>

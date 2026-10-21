@@ -8,8 +8,13 @@ import { errorRoute } from './layouts/error/error.route';
 const routes: Routes = [
   {
     path: '',
-    loadComponent: () => import('./home/home'),
-    title: '¡Bienvenido, Java Hipster!',
+    loadComponent: () => import('./public/album-access/album-access.component'),
+    title: 'Selecta | Tu álbum',
+  },
+  {
+    path: 'album/:accessCode',
+    loadComponent: () => import('./public/album-gallery/album-gallery.component'),
+    title: 'Selecta | Tu galería',
   },
   {
     path: '',
