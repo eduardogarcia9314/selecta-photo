@@ -3,10 +3,13 @@ package com.selecta.photo.photo.storage;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.nio.file.*;
 import java.util.UUID;
 import javax.imageio.ImageIO;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.UrlResource;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -177,5 +180,26 @@ public class LocalPhotoStorageService implements PhotoStorageService {
         }
 
         return ".jpg";
+    }
+
+    @Override
+    public Resource load(String key) {
+        try {
+            Path file = storageRoot.resolve(key).normalize();
+
+            if (!file.startsWith(storageRoot.normalize())) {
+                throw new IllegalArgumentException("Ruta de archivo inválida");
+            }
+
+            Resource resource = new UrlResource(file.toUri());
+
+            if (!resource.exists() || !resource.isReadable()) {
+                throw new IllegalArgumentException("La imagen no existe");
+            }
+
+            return resource;
+        } catch (MalformedURLException e) {
+            throw new IllegalArgumentException("No se pudo leer la imagen", e);
+        }
     }
 }

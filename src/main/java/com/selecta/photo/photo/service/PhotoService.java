@@ -10,6 +10,7 @@ import com.selecta.photo.photo.web.dto.PhotoResponse;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -70,5 +71,31 @@ public class PhotoService {
 
             throw exception;
         }
+    }
+
+    @Transactional(readOnly = true)
+    public List<PhotoResponse> findAllByAlbum(Long albumId) {
+        return photoRepository.findAllByAlbumIdOrderByUploadedAtAsc(albumId).stream().map(PhotoResponse::from).toList();
+    }
+
+    @Transactional(readOnly = true)
+    public Photo findPhoto(Long albumId, Long photoId) {
+        return photoRepository
+            .findByIdAndAlbumId(photoId, albumId)
+            .orElseThrow(() -> new IllegalArgumentException("La fotografía no existe"));
+    }
+
+    @Transactional(readOnly = true)
+    public Resource loadThumbnail(Long albumId, Long photoId) {
+        Photo photo = findPhoto(albumId, photoId);
+
+        return photoStorageService.load(photo.getThumbnailKey());
+    }
+
+    @Transactional(readOnly = true)
+    public Resource loadPreview(Long albumId, Long photoId) {
+        Photo photo = findPhoto(albumId, photoId);
+
+        return photoStorageService.load(photo.getPreviewKey());
     }
 }
